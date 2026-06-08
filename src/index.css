@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #2563EB;
+  --color-primary-dark: #1D4ED8;
+  --color-primary-light: #DBEAFE;
+  --color-bg: #F8FAFC;
+  --color-card: #FFFFFF;
+  --color-border: #E5E7EB;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+  --color-text-primary: #111827;
+  --color-text-secondary: #6B7280;
+  --font-family-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background-color: #F8FAFC;
+  color: #111827;
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes shimmer {
+  from { background-position: -200px 0; }
+  to { background-position: calc(200px + 100%) 0; }
+}
+
+.animate-fadeIn { animation: fadeIn 0.3s ease-out; }
+.animate-slideUp { animation: slideUp 0.4s ease-out; }
+.animate-spin { animation: spin 1s linear infinite; }
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+/* Safe area padding for mobile */
+.safe-top { padding-top: env(safe-area-inset-top, 0px); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+
+/* Input focus styles */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+/* Prevent zoom on input focus on iOS */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+/* Page container */
+.page-container {
+  min-height: 100dvh;
+  background-color: #F8FAFC;
+}
+
+/* Bottom nav height */
+.bottom-nav-height {
+  height: 72px;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Custom checkbox */
+input[type="checkbox"] {
+  accent-color: #2563EB;
+}
+
+/* Toast animations */
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes toastOut {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-20px) scale(0.95); }
+}
+.toast-enter { animation: toastIn 0.3s ease-out; }
+.toast-exit { animation: toastOut 0.3s ease-in forwards; }
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:active {
+  transform: scale(0.98);
+}
+
+/* Upload drop zone */
+.drop-zone {
+  transition: all 0.2s ease;
+}
+.drop-zone.drag-over {
+  border-color: #2563EB;
+  background-color: #EFF6FF;
+}
+
+/* Status badges */
+.badge-pending {
+  background-color: #FEF3C7;
+  color: #92400E;
+}
+.badge-approved {
+  background-color: #DCFCE7;
+  color: #14532D;
+}
+.badge-rejected {
+  background-color: #FEE2E2;
+  color: #7F1D1D;
+}
